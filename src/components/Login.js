@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, TextInput, View } from "react-native";
-import NetworkManager from '../../network/network-manager';
-import { APIConst } from '../../network/api-constant';
-import { Headers } from '../../network/api-header-constant';
+import NetworkManager from '../network/network-manager';
+import { APIConst } from '../network/api-constant';
+import { Headers } from '../network/api-header-constant';
 
 export const Login = () => {
   const [isNotSubmitted, setIsNotSubmitted] = useState(true);  
@@ -20,15 +20,15 @@ export const Login = () => {
         loginstrategy: 'username',
     };
 
-    return NetworkManager.requestPOST(loginUrl, reqBody, Headers)
-        .then((data) => {
-            console.log(`MZA: login response SUCCESSFUL: status: ${data && data.status ? data.status : null}`);
-            setIsNotSubmitted(true);  
-        })
-        .catch((err) => {
-            setIsNotSubmitted(true);
-            console.log("MZA: login response FAILED:", err.message);
-        });
+    NetworkManager.requestPOST(loginUrl, reqBody, Headers)
+      .then((data) => {
+          console.log(`MZA: login response SUCCESSFUL: status: ${data && data.status ? data.status : null}`);
+          setIsNotSubmitted(true);  
+      })
+      .catch((err) => {
+          setIsNotSubmitted(true);
+          console.log("MZA: login response FAILED:", err.message);
+      });
   };
 
   return (
