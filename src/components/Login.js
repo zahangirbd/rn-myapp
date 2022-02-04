@@ -10,6 +10,12 @@ export const Login = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
+
+  const clearInputFields = () => {
+    setUserName('');
+    setPassword('');
+  };
+
   const handleLogin = () => {
     setIsNotSubmitted(false);  
     const loginUrl = APIConst.BaseURL + APIConst.URLConst.users + APIConst.URLConst.login;
@@ -27,6 +33,7 @@ export const Login = ({navigation}) => {
           setIsNotSubmitted(true);
           if (data && data.status >= 200 &&  data.status < 300) {
             // showTwoButtonAlert('Success', 'User Login Successful');
+            clearInputFields();
             navigation.navigate('Home');
           } else {
             showTwoButtonAlert('Failed', 'User Login Failed');
