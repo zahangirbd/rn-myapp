@@ -17,6 +17,7 @@
     "react-navigation-stack": "^2.10.4"
   },
   "devDependencies": {
+    "@types/react-native": "^0.66.15",
     "babel-preset-expo": "^5.0.0"
   },
   "private": true
