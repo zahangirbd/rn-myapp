@@ -3,6 +3,7 @@ import { Button, TextInput, View } from "react-native";
 import NetworkManager from '../network/network-manager';
 import { APIConst } from '../network/api-constant';
 import { Headers } from '../network/api-header-constant';
+import { showTwoButtonAlert } from './AlertMsgBoxes';
 
 export const Login = () => {
   const [isNotSubmitted, setIsNotSubmitted] = useState(true);  
@@ -23,11 +24,17 @@ export const Login = () => {
     NetworkManager.requestPOST(loginUrl, reqBody, Headers)
       .then((data) => {
           console.log(`MZA: login response SUCCESSFUL: status: ${data && data.status ? data.status : null}`);
-          setIsNotSubmitted(true);  
+          setIsNotSubmitted(true);
+          if (data && data.status >= 200 &&  data.status < 300) {
+            showTwoButtonAlert('Success', 'User Login Successful');
+          } else {
+            showTwoButtonAlert('Failed', 'User Login Failed');
+          } 
       })
       .catch((err) => {
           setIsNotSubmitted(true);
           console.log("MZA: login response FAILED:", err.message);
+          showTwoButtonAlert('Error', err.message);
       });
   };
 
