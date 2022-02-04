@@ -5,7 +5,7 @@ import { APIConst } from '../network/api-constant';
 import { Headers } from '../network/api-header-constant';
 import { showTwoButtonAlert } from './AlertMsgBoxes';
 
-export const Login = () => {
+export const Login = ({navigation}) => {
   const [isNotSubmitted, setIsNotSubmitted] = useState(true);  
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +26,8 @@ export const Login = () => {
           console.log(`MZA: login response SUCCESSFUL: status: ${data && data.status ? data.status : null}`);
           setIsNotSubmitted(true);
           if (data && data.status >= 200 &&  data.status < 300) {
-            showTwoButtonAlert('Success', 'User Login Successful');
+            // showTwoButtonAlert('Success', 'User Login Successful');
+            navigation.navigate('Home');
           } else {
             showTwoButtonAlert('Failed', 'User Login Failed');
           } 

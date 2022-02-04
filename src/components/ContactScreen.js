@@ -17,6 +17,10 @@ export default class ContactScreen extends Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Contact Screen</Text>
+        <Button
+          title="Go Back"
+          onPress={() => this.props.navigation.navigate('Home')}
+        />
       </View>
     )
   }

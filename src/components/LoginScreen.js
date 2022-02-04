@@ -18,7 +18,7 @@ export default class LoginScreen extends Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Login Screen</Text>
-        <Login />
+        <Login navigation={this.props.navigation}/>
       </View>
     )
   }

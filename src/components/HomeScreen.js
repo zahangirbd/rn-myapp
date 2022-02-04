@@ -22,6 +22,14 @@ export default class HomeScreen extends Component {
           title="Go to About"
           onPress={() => this.props.navigation.navigate('About')}
         />
+        <Button
+          title="Go to Contact"
+          onPress={() => this.props.navigation.navigate('Contact')}
+        />
+        <Button
+          title="Logout"
+          onPress={() => this.props.navigation.navigate('Login')}
+        />
       </View>
     )
   }
